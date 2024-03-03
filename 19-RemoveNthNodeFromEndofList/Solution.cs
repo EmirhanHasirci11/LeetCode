@@ -11,31 +11,24 @@
         }
     }
     internal class Solution
-    {
-
-        static void Main(string[] args)
-        {
-            ListNode Head= new ListNode(1);
-            Head.next = new ListNode(2);
-            Head.next.next = new ListNode(3);
-            Head.next.next.next = new ListNode(4);
-            Head.next.next.next.next = new ListNode(5);
-            ListNode a= RemoveNthFromEnd(Head,2);
-        }
+    {        
         public static ListNode RemoveNthFromEnd(ListNode head, int n)
         {
-            Dictionary<int, ListNode> map = new();
-            ListNode current = head;
-            int count =1;
-            while (current != null)
+            ListNode dummy = new(0, head);
+            ListNode slow = dummy, fast = dummy;
+            for (int i = 0; i < n; i++)
             {
-                map[count++]=current;               
-                current= current.next;
+                fast = fast.next;
             }
-            ListNode behind = map.ContainsKey(map.Count-n)!=null? map[map.Count - n]:head;
-            ListNode after = map.ContainsKey(map.Count - n + 2) != null ? map[map.Count - n + 2] : null;
-            behind.next = after;
-            return head;
+            while (fast?.next != null)
+            {
+                slow = slow.next;
+                fast = fast.next;
+            }
+            slow.next = slow.next.next;
+
+            return dummy.next;
         }
+    }
     }
 }
