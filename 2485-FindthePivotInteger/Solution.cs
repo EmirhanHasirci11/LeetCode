@@ -10,7 +10,8 @@
             {
                 leftSum += i;
                 if (totalSum - leftSum + i == leftSum)
-                    return i;
+                    return i; 
+
             }
             return -1;
 
