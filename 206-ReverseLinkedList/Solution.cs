@@ -6,6 +6,7 @@
         {
             ListNode prev = null;
             ListNode next;
+
             while (head != null)
             {
                 next = head.next;
@@ -14,6 +15,7 @@
                 head = next;
             }
             head = prev;
+
             return head;
         }
     }
