@@ -14,6 +14,7 @@ namespace PalindromeLinkedList
                 head = head.next;
             }
             string x = stringBuilder.ToString();
+
             return x.Reverse().SequenceEqual(x);
         }
     }
