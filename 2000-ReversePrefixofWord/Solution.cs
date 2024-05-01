@@ -15,6 +15,7 @@ namespace ReversePrefixofWord
                 if (c == ch)
                     break;
             }
+
             
             return result + word.Substring(result.Length);
         }
