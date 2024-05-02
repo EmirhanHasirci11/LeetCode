@@ -10,8 +10,10 @@
             {
                 if (nums[i] == -1 * nums[j])
                     return nums[i];
+
                 else if (nums[i] > -1 * nums[j])
                     i++;
+
                 else
                     j--;
             }
