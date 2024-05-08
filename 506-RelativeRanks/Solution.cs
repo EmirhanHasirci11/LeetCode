@@ -32,6 +32,7 @@
                         resultText = (i+1).ToString();
                         break;
                 }
+
                 result[Array.IndexOf(score,sortedArray[i])] = resultText;
             }
             return result;
