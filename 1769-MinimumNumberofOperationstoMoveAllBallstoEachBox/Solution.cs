@@ -1,0 +1,45 @@
+﻿namespace MinimumNumberofOperationstoMoveAllBallstoEachBox
+{
+    internal class Solution
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+        public int[] MinOperations(string boxes)
+        {
+            int n = boxes.Length;
+            int[] distances = new int[n];
+
+            int prefixCount = 0;
+            int prefixSum = 0;
+
+            // Calculate prefix sums
+            for (int i = 0; i < n; ++i)
+            {
+                distances[i] = prefixCount * i - prefixSum;
+                if (boxes[i] == '1')
+                {
+                    prefixCount++;
+                    prefixSum += i;
+                }
+            }
+
+            int suffixCount = 0;
+            int suffixSum = 0;
+
+            // Calculate suffix sums and update the distances array
+            for (int i = n - 1; i >= 0; --i)
+            {
+                distances[i] += suffixSum - suffixCount * i;
+                if (boxes[i] == '1')
+                {
+                    suffixCount++;
+                    suffixSum += i;
+                }
+            }
+
+            return distances;   
+        }
+    }
+}
